@@ -1,0 +1,29 @@
+Model: "model"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_1 (InputLayer)           [(None, 130)]        0           []                               
+                                                                                                  
+ input_2 (InputLayer)           [(None, 130)]        0           []                               
+                                                                                                  
+ tf_distil_bert_model (TFDistil  TFBaseModelOutput(l  134734080  ['input_1[0][0]',                
+ BertModel)                     ast_hidden_state=(N               'input_2[0][0]']                
+                                one, 130, 768),                                                   
+                                 hidden_states=None                                               
+                                , attentions=None)                                                
+                                                                                                  
+ tf.__operators__.getitem (Slic  (None, 768)         0           ['tf_distil_bert_model[0][0]']   
+ ingOpLambda)                                                                                     
+                                                                                                  
+ dropout_19 (Dropout)           (None, 768)          0           ['tf.__operators__.getitem[0][0]'
+                                                                 ]                                
+                                                                                                  
+ dense (Dense)                  (None, 768)          590592      ['dropout_19[0][0]']             
+                                                                                                  
+ dense_1 (Dense)                (None, 1)            769         ['dense[0][0]']                  
+                                                                                                  
+==================================================================================================
+Total params: 135,325,441
+Trainable params: 135,325,441
+Non-trainable params: 0
+__________________________________________________________________________________________________

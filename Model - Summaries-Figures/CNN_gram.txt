@@ -1,0 +1,76 @@
+Model: "model"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_1 (InputLayer)           [(None, 100)]        0           []                               
+                                                                                                  
+ embedding (Embedding)          (None, 100, 300)     13723500    ['input_1[0][0]']                
+                                                                                                  
+ conv1d (Conv1D)                (None, 100, 512)     154112      ['embedding[0][0]']              
+                                                                                                  
+ max_pooling1d (MaxPooling1D)   (None, 50, 512)      0           ['conv1d[0][0]']                 
+                                                                                                  
+ conv1d_1 (Conv1D)              (None, 50, 512)      524800      ['max_pooling1d[0][0]']          
+                                                                                                  
+ max_pooling1d_1 (MaxPooling1D)  (None, 25, 512)     0           ['conv1d_1[0][0]']               
+                                                                                                  
+ conv1d_2 (Conv1D)              (None, 25, 512)      262656      ['max_pooling1d_1[0][0]']        
+                                                                                                  
+ max_pooling1d_2 (MaxPooling1D)  (None, 12, 512)     0           ['conv1d_2[0][0]']               
+                                                                                                  
+ conv1d_3 (Conv1D)              (None, 12, 512)      262656      ['max_pooling1d_2[0][0]']        
+                                                                                                  
+ max_pooling1d_3 (MaxPooling1D)  (None, 6, 512)      0           ['conv1d_3[0][0]']               
+                                                                                                  
+ average_pooling1d (AveragePool  (None, 50, 512)     0           ['conv1d[0][0]']                 
+ ing1D)                                                                                           
+                                                                                                  
+ average_pooling1d_1 (AveragePo  (None, 25, 512)     0           ['conv1d_1[0][0]']               
+ oling1D)                                                                                         
+                                                                                                  
+ average_pooling1d_2 (AveragePo  (None, 12, 512)     0           ['conv1d_2[0][0]']               
+ oling1D)                                                                                         
+                                                                                                  
+ average_pooling1d_3 (AveragePo  (None, 6, 512)      0           ['conv1d_3[0][0]']               
+ oling1D)                                                                                         
+                                                                                                  
+ concatenate (Concatenate)      (None, 186, 512)     0           ['max_pooling1d[0][0]',          
+                                                                  'max_pooling1d_1[0][0]',        
+                                                                  'max_pooling1d_2[0][0]',        
+                                                                  'max_pooling1d_3[0][0]',        
+                                                                  'average_pooling1d[0][0]',      
+                                                                  'average_pooling1d_1[0][0]',    
+                                                                  'average_pooling1d_2[0][0]',    
+                                                                  'average_pooling1d_3[0][0]']    
+                                                                                                  
+ global_max_pooling1d (GlobalMa  (None, 512)         0           ['concatenate[0][0]']            
+ xPooling1D)                                                                                      
+                                                                                                  
+ global_average_pooling1d (Glob  (None, 512)         0           ['concatenate[0][0]']            
+ alAveragePooling1D)                                                                              
+                                                                                                  
+ concatenate_1 (Concatenate)    (None, 1024)         0           ['global_max_pooling1d[0][0]',   
+                                                                  'global_average_pooling1d[0][0]'
+                                                                 ]                                
+                                                                                                  
+ dense (Dense)                  (None, 512)          524800      ['concatenate_1[0][0]']          
+                                                                                                  
+ dropout (Dropout)              (None, 512)          0           ['dense[0][0]']                  
+                                                                                                  
+ batch_normalization (BatchNorm  (None, 512)         2048        ['dropout[0][0]']                
+ alization)                                                                                       
+                                                                                                  
+ dense_1 (Dense)                (None, 256)          131328      ['batch_normalization[0][0]']    
+                                                                                                  
+ dropout_1 (Dropout)            (None, 256)          0           ['dense_1[0][0]']                
+                                                                                                  
+ batch_normalization_1 (BatchNo  (None, 256)         1024        ['dropout_1[0][0]']              
+ rmalization)                                                                                     
+                                                                                                  
+ dense_2 (Dense)                (None, 1)            257         ['batch_normalization_1[0][0]']  
+                                                                                                  
+==================================================================================================
+Total params: 15,587,181
+Trainable params: 15,585,645
+Non-trainable params: 1,536
+__________________________________________________________________________________________________

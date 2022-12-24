@@ -1,0 +1,27 @@
+Model: "model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_1 (InputLayer)        [(None, 100)]             0         
+                                                                 
+ embedding (Embedding)       (None, 100, 300)          13723500  
+                                                                 
+ spatial_dropout1d (SpatialD  (None, 100, 300)         0         
+ ropout1D)                                                       
+                                                                 
+ bidirectional (Bidirectiona  (None, 200)              241200    
+ l)                                                              
+                                                                 
+ dropout (Dropout)           (None, 200)               0         
+                                                                 
+ dense (Dense)               (None, 100)               20100     
+                                                                 
+ dense_1 (Dense)             (None, 50)                5050      
+                                                                 
+ dense_2 (Dense)             (None, 1)                 51        
+                                                                 
+=================================================================
+Total params: 13,989,901
+Trainable params: 13,989,901
+Non-trainable params: 0
+_________________________________________________________________

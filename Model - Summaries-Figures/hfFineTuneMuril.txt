@@ -1,0 +1,32 @@
+Model: "model"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_1 (InputLayer)           [(None, 91)]         0           []                               
+                                                                                                  
+ input_2 (InputLayer)           [(None, 91)]         0           []                               
+                                                                                                  
+ tf_bert_model (TFBertModel)    TFBaseModelOutputWi  237556224   ['input_1[0][0]',                
+                                thPoolingAndCrossAt               'input_2[0][0]']                
+                                tentions(last_hidde                                               
+                                n_state=(None, 91,                                                
+                                768),                                                             
+                                 pooler_output=(Non                                               
+                                e, 768),                                                          
+                                 past_key_values=No                                               
+                                ne, hidden_states=N                                               
+                                one, attentions=Non                                               
+                                e, cross_attentions                                               
+                                =None)                                                            
+                                                                                                  
+ dropout_37 (Dropout)           (None, 768)          0           ['tf_bert_model[0][1]']          
+                                                                                                  
+ dense (Dense)                  (None, 768)          590592      ['dropout_37[0][0]']             
+                                                                                                  
+ dense_1 (Dense)                (None, 1)            769         ['dense[0][0]']                  
+                                                                                                  
+==================================================================================================
+Total params: 238,147,585
+Trainable params: 238,147,585
+Non-trainable params: 0
+__________________________________________________________________________________________________
